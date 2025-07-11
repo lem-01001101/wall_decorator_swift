@@ -8,25 +8,18 @@
 import SwiftUI
 import RealityKit
 import ARKit
+import Combine
 
 struct ARViewContainer: UIViewRepresentable {
+    
+    private static var cancellables = Set<AnyCancellable>()
+    
+    
     func updateUIView(_ uiView: ARView, context: Context) {
         
     }
     
     func makeUIView(context: Context) -> ARView {
-        let arView = ARView(frame: .zero)
-        
-        let config = ARWorldTrackingConfiguration()
-        config.planeDetection = [.vertical]
-        
-        arView.session.run(config)
-        
-        return arView
+        return CustomARView(frame: .zero)
     }
 }
-/*
-#Preview {
-    ARViewContainer()
-}
-*/

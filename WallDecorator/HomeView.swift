@@ -24,7 +24,7 @@ struct HomeView: View {
                         .padding()
                         .foregroundColor(.white)
                     
-                    
+                    /*
                     NavigationLink ("Counter", destination: CounterView(viewModel: CounterViewModel()))
                         .padding()
                     
@@ -35,7 +35,7 @@ struct HomeView: View {
                     
                     NavigationLink("View Profile", destination: ProfileView())
                         .padding()
-                    
+                    */
                 }
             }
         }
