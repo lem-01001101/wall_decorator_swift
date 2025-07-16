@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct HomeView: View {
-    @ObservedObject var viewModel = CounterViewModel()
     @State private var username: String = ""
     @EnvironmentObject var settings: AppSettings
     
@@ -23,19 +22,6 @@ struct HomeView: View {
                         .font(.largeTitle)
                         .padding()
                         .foregroundColor(.white)
-                    
-                    /*
-                    NavigationLink ("Counter", destination: CounterView(viewModel: CounterViewModel()))
-                        .padding()
-                    
-                    TextField("User Name: ", text: $username)
-                        .onSubmit {
-                            settings.username = username
-                        }
-                    
-                    NavigationLink("View Profile", destination: ProfileView())
-                        .padding()
-                    */
                 }
             }
         }
