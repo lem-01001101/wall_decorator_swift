@@ -9,7 +9,6 @@ import SwiftUI
 
 struct HomeView: View {
     @State private var username: String = ""
-    @EnvironmentObject var settings: AppSettings
     
     
     var body: some View {
@@ -21,7 +20,10 @@ struct HomeView: View {
                     Text("Wall Decorator App")
                         .font(.largeTitle)
                         .padding()
-                        .foregroundColor(.white)
+                        .foregroundColor(.green)
+                    Spacer()
+                    FrameStyleSelector()
+                        .padding()
                 }
             }
         }
@@ -31,5 +33,4 @@ struct HomeView: View {
 
 #Preview {
     HomeView()
-        .environmentObject(AppSettings())
 }

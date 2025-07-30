@@ -12,6 +12,8 @@ import Combine
 //import UIKit
 
 class CustomARView: ARView, ARSessionDelegate {
+    var currentStyle: FrameStyle = .classic
+    
     private var cancellables = Set<AnyCancellable>()
 
     required init(frame frameRect: CGRect) { // changed here overried to required
@@ -63,10 +65,22 @@ class CustomARView: ARView, ARSessionDelegate {
     }
     
     func placeFrame(at transform: simd_float4x4) {
+        
+        func makeMaterial(for style: FrameStyle) -> Material {
+            switch style {
+            case .classic:
+                return SimpleMaterial(color: .brown, isMetallic: false)
+            case .modern:
+                return SimpleMaterial(color: .black, isMetallic: true)
+            case .pop:
+                return SimpleMaterial(color: .red, isMetallic: false)
+            }
+        }
         // Create a small art frame mesh
         let mesh = MeshResource.generatePlane(width: 0.5, height: 0.5)
-        let color = UIColor.red.withAlphaComponent(0.85)
-        let material = SimpleMaterial(color: color, isMetallic: false)
+        //let color = UIColor.red.withAlphaComponent(0.85)
+        //let material = SimpleMaterial(color: color, isMetallic: false)
+        let material = makeMaterial(for: currentStyle)
         let modelEntity = ModelEntity(mesh: mesh, materials: [material])
         
         // rotate the model to flush with the wall

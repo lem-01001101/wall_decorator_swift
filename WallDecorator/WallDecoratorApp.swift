@@ -9,12 +9,13 @@ import SwiftUI
 
 @main
 struct WallDecoratorApp: App {
-    @StateObject private var settings = AppSettings()
+    @StateObject private var frameSettings = FrameSettings()
     
     var body: some Scene {
         WindowGroup {
             HomeView()
-                .environmentObject(settings)
+                .environmentObject(frameSettings)
+            
         }
     }
 }
