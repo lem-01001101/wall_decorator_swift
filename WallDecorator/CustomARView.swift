@@ -36,6 +36,13 @@ class CustomARView: ARView, ARSessionDelegate {
         let location = sender.location(in: self)
         print("✅ Tap detected at screen location: \(location)")
 
+        // Check if tap hits existing entity
+        if let entity = self.entity(at: location) {
+            print("✅ Existing frame tapped. Removing it.")
+            entity.removeFromParent()
+            return
+        }
+        
         // Perform raycast
         guard let result = self.raycast(from: location) else {
             print("❌ No vertical plane hit detected")
@@ -64,6 +71,10 @@ class CustomARView: ARView, ARSessionDelegate {
         
         // rotate the model to flush with the wall
         modelEntity.transform.rotation = simd_quatf(angle: -.pi / 2, axis: [1, 0, 0])
+        
+        //
+        modelEntity.generateCollisionShapes(recursive: true)
+        self.installGestures([.rotation, .scale], for: modelEntity)
 
         // Create anchor at exact world position
         let anchor = AnchorEntity(world: transform)
