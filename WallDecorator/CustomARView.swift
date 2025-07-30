@@ -110,6 +110,7 @@ class CustomARView: ARView, ARSessionDelegate {
 
             print("✅ Vertical ARPlaneAnchor detected!")
 
+            /*
             // Create grid mesh
             let mesh = MeshResource.generatePlane(width: 1.5, height: 1.5)
             let color = UIColor.blue.withAlphaComponent(0.3)
@@ -127,6 +128,7 @@ class CustomARView: ARView, ARSessionDelegate {
             self.scene.addAnchor(anchorEntity)
 
             print("✅ Added transparent grid to vertical plane!")
+             */
         }
     }
 }

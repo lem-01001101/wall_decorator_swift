@@ -19,8 +19,10 @@ struct FrameStyleSelector: View {
                 }) {
                     Text(style.rawValue.capitalized)
                         .padding()
+                        .foregroundColor(.black)
+                        //.background(Color(red: 253/255, green:250/255, blue:242/255))
                         .background(
-                            frameSettings.currentStyle == style ? Color.gray.opacity(0.2) : Color.clear
+                            frameSettings.currentStyle == style ? Color(red: 253/255, green:250/255, blue:242/255) : Color.clear
                         )
                         .cornerRadius(8)
                 }
